@@ -40,6 +40,7 @@ In entrambi i casi si deve mostrare un messaggio adatto alla situazione.
 
 #------------------------------------------LIBRERIE-------------------------------------------------------
 
+from random import randint
 import random   #libreria per usare un valore casuale
 import pyodide  #libreria per pyscript
 import js       #libreria per javascript
@@ -70,7 +71,7 @@ def main():
     global length
     global word
     global display
-    global already_guessed
+    global already_guessed 
     global limit
 
     
@@ -79,6 +80,96 @@ def main():
     # inserisco la stringa segnaposto dentro il contenitore HTML
     display = "___" # da modificare
     custom_utils.writeToHtmlElement(word_html_container, '%s' % (display))
+    
+    already_guessed = []
+    count = 5
+
+
+    x = len(words)
+
+    for _ in range(1):
+        value = randint(0, x-1)
+        parola = words[value]
+
+
+    print(parola)
+    word = list(words[value])
+    print(word)
+
+    # lunhezza = len(word)
+
+    display = ""
+
+    for i in words:
+        display += '_'
+
+
+
+
+    custom_utils.writeToHtmlElement(word_html_container, '%s' % (display))
+
+    btn = custom_utils.getHtmlElement("add-letter-btn")
+
+    def ciao():
+        print('ciao')
+    
+    def prova():
+        print('ciao prova')
+
+    custom_utils.addOnClickEventToHtmlElement( add_letter_btn,prova)
+
+    lettera = 'a'
+
+    # if count > 0:
+    #     if lettera is already_guessed:
+    #         return 
+    #     elif lettera not in already_guessed:
+    #         already_guessed.append(lettera)
+    #         for i in word:
+    #             if lettera = i:
+    #                 index = word.index(lettera)
+
+    
+custom_utils.writeToHtmlElement(word_html_container, '%s' % (display))
+
+btn = custom_utils.getHtmlElement("add-letter-btn")
+input = custom_utils.getHtmlElement("user-letter")
+
+def checkLetter (letter):
+    global display
+    for i in range (len (word)):
+        if letter == word[i]:
+            # array word.split("")
+            word[i] = letter
+            display = word.join("")
+            custom_utils.writeToHtmlElement (word_html_container,'%s' % (display))
+
+def setValue(e):
+    custom_utils.writeToConsole(input.value) 
+    checkLetter (input.value)
+    custom_utils.writeToConsole(display)
+
+custom_utils.addKeyupEventToHtmlElement(input, setValue)
+custom_utils.addOnClickEventToHtmlElement(btn, setValue)
+
+
+
+
+    # allertly_guessed_letter = []
+    # letter_errors = []
+
+    # def split_letter()
+        
+
+
+
+    #     if user_letter == word :
+    #         user_letter.append(allertly_guessed_letter)
+    #     else :
+
+
+
+
 
 
 main()
