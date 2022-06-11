@@ -87,6 +87,7 @@ def main():
 
     x = len(words)
 
+js
     for _ in range(1):
         value = randint(0, x-1)
         parola = words[value]
